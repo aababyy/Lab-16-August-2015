@@ -1,0 +1,65 @@
+using System;
+
+class ChristmasTree
+{
+    static void Main()
+    {
+        int n = int.Parse(Console.ReadLine());
+
+        int count = 1;
+        for (int i = 1; i <= (n / 2) + 1; i++)
+        {
+            Console.WriteLine(
+                new string('\'', (((n * 2) + 1) - count) / 2) +
+                new string('^', count) +
+                new string('\'', (((n * 2) + 1) - count) / 2));
+            count = count + 2;
+        }
+
+        count = 3;
+        for (int i = 1; i <= (n / 2) + 1; i++)
+        {
+            Console.WriteLine(
+                new string('\'', (((n * 2) + 1) - count) / 2) +
+                new string('^', count) +
+                new string('\'', (((n * 2) + 1) - count) / 2));
+            count = count + 2;
+        }
+
+        for (int i = 1; i <= (n / 2) + 1; i++)
+        {
+            Console.WriteLine(
+                new string('\'', (((n * 2) + 1) - 3) / 2) +
+                "| |" +
+                new string('\'', (((n * 2) + 1) - 3) / 2));
+        }
+
+        Console.WriteLine(new string('-', (n * 2) + 1));
+
+        //Version 2
+        /*
+        int n = int.Parse(Console.ReadLine());
+        int count = 1;
+
+        for (int i = 0; i < 3 * ((n / 2) + 1); i++)
+        {
+            if (i <= n)
+            {
+                if (i == (n / 2) + 1)
+                {
+                    count = 3;
+                }
+                Console.WriteLine(new string('\'', n - (count / 2))
+                    + new string('^', count)
+                    + new string('\'', n - (count / 2)));
+                count = count + 2;
+            }
+            else
+            {
+                Console.WriteLine(new string('\'', n - 1) + "| |" + new string('\'', n - 1));
+            }
+        }
+        Console.WriteLine(new string('-', (2 * n) + 1));
+        */
+    }
+}

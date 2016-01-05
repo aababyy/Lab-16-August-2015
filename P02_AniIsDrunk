@@ -1,0 +1,39 @@
+using System;
+
+class AniIsDrunk
+{
+    static void Main()
+    {
+        long n = long.Parse(Console.ReadLine());
+        long pos = 0;
+        long count = 0;
+
+        string input = Console.ReadLine();
+        while (!input.Equals("Found a free one!"))
+        {
+            long steps = long.Parse(input);
+            long posNew = (pos + steps) % n;
+            long diff = posNew - pos;
+
+            if (diff < 0)
+            {
+                count = count + Math.Abs(diff);
+                Console.WriteLine("Go {0} steps to the left, Ani.", Math.Abs(diff));
+            }
+            else if (diff > 0)
+            {
+                count = count + diff;
+                Console.WriteLine("Go {0} steps to the right, Ani.", diff);
+            }
+            else
+            {
+                Console.WriteLine("Stay there, Ani.");
+            }
+
+            pos = posNew;
+            input = Console.ReadLine();
+        }
+
+        Console.WriteLine("Moved a total of {0} steps.", count);
+    }
+}

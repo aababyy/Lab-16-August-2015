@@ -1,0 +1,44 @@
+using System;
+
+class PhoneProcesses
+{
+    static void Main()
+    {
+        //string p = Console.ReadLine().Trim();
+        //int power = int.Parse(p.Substring(0, p.Length - 1));
+        int power = int.Parse(Console.ReadLine().Trim(new char[] { ' ', '%' }));
+        int count = 0;
+
+        string line = Console.ReadLine().ToLower();
+        while (!line.Equals("end"))
+        {
+            if (power <= 15)
+            {
+                count = count + 1;
+                line = Console.ReadLine().ToLower();
+                continue;
+            }
+            else
+            {
+                int powerApp = int.Parse(line.Substring(line.Length - 3, 2));
+                power = power - powerApp;
+            }
+
+            line = Console.ReadLine().ToLower();
+        }
+
+        if (power <= 0)
+        {
+            Console.WriteLine("Phone Off");
+        }
+        else if (0 < power && power <= 15)
+        {
+            Console.WriteLine("Connect charger -> {0}%", power);
+            Console.WriteLine("Programs left -> {0}", count);
+        }
+        else
+        {
+            Console.WriteLine("Successful complete -> {0}%", power);
+        }
+    }
+}
